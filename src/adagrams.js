@@ -98,9 +98,27 @@ scoreWord(word){
 },
 
 highestScoreFrom(words){
-  
-}
+  let winner = {
+    word: "",
+    score: 0
+  }
+  words.forEach((word)=>{
+    let currentScore = this.scoreWord(word);
+    if (currentScore > winner.score) {
+      winner.score = currentScore;
+      winner.word = word;
+    } else if (currentScore == winner.score){
+      if ((word.length == 10 && winner.word.length != 10) ||
+    (word.length < winner.word.length && winner.word.length != 10)) {
+      winner.score = currentScore;
+      winner.word = word;
+    }
+    }
 
+
+});
+ return winner;
+ }
 };
 
 // Do not remove this line or your tests will break!
